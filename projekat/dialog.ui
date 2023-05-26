@@ -6,93 +6,276 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1045</width>
-    <height>767</height>
+    <width>1118</width>
+    <height>818</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLCDNumber" name="lcdNumber">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>130</y>
-     <width>441</width>
-     <height>141</height>
+     <x>220</x>
+     <y>20</y>
+     <width>591</width>
+     <height>271</height>
     </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
    </property>
    <property name="frameShape">
-    <enum>QFrame::WinPanel</enum>
+    <enum>QFrame::Box</enum>
    </property>
    <property name="frameShadow">
-    <enum>QFrame::Sunken</enum>
+    <enum>QFrame::Raised</enum>
    </property>
-   <property name="smallDecimalPoint">
-    <bool>true</bool>
-   </property>
+   <widget class="QLCDNumber" name="lcdNumber">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>90</y>
+      <width>431</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>491</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="circlewidget" name="widget_7" native="true"/>
+     </item>
+     <item>
+      <widget class="circlewidget" name="widget_6" native="true"/>
+     </item>
+     <item>
+      <widget class="circlewidget" name="widget_5" native="true"/>
+     </item>
+     <item>
+      <widget class="circlewidget" name="widget_4" native="true"/>
+     </item>
+     <item>
+      <widget class="circlewidget" name="widget_3" native="true"/>
+     </item>
+     <item>
+      <widget class="circlewidget" name="widget_2" native="true"/>
+     </item>
+     <item>
+      <widget class="circlewidget" name="widget" native="true"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>190</y>
+      <width>271</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>25</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Stop</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
+  <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>60</y>
-     <width>491</width>
-     <height>71</height>
+     <x>220</x>
+     <y>310</y>
+     <width>591</width>
+     <height>241</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="circlewidget" name="widget_7" native="true"/>
-    </item>
-    <item>
-     <widget class="circlewidget" name="widget_6" native="true"/>
-    </item>
-    <item>
-     <widget class="circlewidget" name="widget_5" native="true"/>
-    </item>
-    <item>
-     <widget class="circlewidget" name="widget_4" native="true"/>
-    </item>
-    <item>
-     <widget class="circlewidget" name="widget_3" native="true"/>
-    </item>
-    <item>
-     <widget class="circlewidget" name="widget_2" native="true"/>
-    </item>
-    <item>
-     <widget class="circlewidget" name="widget" native="true"/>
-    </item>
-   </layout>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>351</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_2"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Unesite min razdaljinu :               </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Unesite max razdaljinu :</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>130</y>
+      <width>271</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="spacing">
+      <number>25</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>50</y>
+      <width>68</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>(reset = 2.5)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>90</y>
+      <width>68</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>(reset = 50)</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QFrame" name="frame_3">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>320</y>
-     <width>91</width>
-     <height>30</height>
+     <x>220</x>
+     <y>570</y>
+     <width>591</width>
+     <height>171</height>
     </rect>
    </property>
-   <property name="text">
-    <string>START</string>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
    </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>320</y>
-     <width>91</width>
-     <height>30</height>
-    </rect>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
-   <property name="text">
-    <string>STOP</string>
-   </property>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>90</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>80</y>
+      <width>122</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ukljuci / Iskljuci</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <customwidgets>

@@ -6,6 +6,9 @@ float distance;
 float lowerRange=2.5;
 float upperRange=50.0;
 float Range=upperRange-lowerRange;
+int highTime;
+int lowTime;
+bool bazer=false;
 
 float getDistance()
 {
@@ -50,6 +53,9 @@ Dialog::Dialog(QWidget *parent)
     timer=new QTimer(this);
     connect (timer, SIGNAL(timeout()), this,SLOT(ultrasonic_read()));
 
+    timer1=new QTimer(this);
+    connect (timer1, SIGNAL(timeout()), this,SLOT(buzzer()));
+
 
 }
 
@@ -67,6 +73,7 @@ void Dialog::ultrasonic_read()
         QMessageBox::warning(this, "SUDAR", "Odmakni se !!!");
     }
 
+
     if (distance > upperRange ) {
         ui->widget->reset();
         ui->widget_2->reset();
@@ -75,6 +82,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->reset();
         ui->widget_6->reset();
         ui->widget_7->reset();
+        lowTime=0;
+        highTime=0;
    }
 
     if ((distance >= (lowerRange + Range*0.8)) && (distance < upperRange)) {
@@ -85,6 +94,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->reset();
         ui->widget_6->reset();
         ui->widget_7->reset();
+        lowTime=200;
+        highTime=300;
    }
 
     if ((distance >=(lowerRange + Range*0.6)) && (distance <(lowerRange + Range*0.8))) {
@@ -95,6 +106,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->reset();
         ui->widget_6->reset();
         ui->widget_7->reset();
+        lowTime=200;
+        highTime=300;
    }
 
     if ((distance >=(lowerRange + Range*0.4)) && (distance < (lowerRange + Range*0.6))) {
@@ -105,6 +118,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->reset();
         ui->widget_6->reset();
         ui->widget_7->reset();
+        lowTime=200;
+        highTime=300;
    }
 
     if ((distance >=(lowerRange + Range*0.275)) && (distance < (lowerRange + Range*0.4))) {
@@ -115,6 +130,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->reset();
         ui->widget_6->reset();
         ui->widget_7->reset();
+        lowTime=100;
+        highTime=200;
    }
 
     if ((distance >=(lowerRange +Range*0.15)) && (distance < (lowerRange + Range*0.275))) {
@@ -125,6 +142,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->setFillColor(QColor(247,139,0));
         ui->widget_6->reset();
         ui->widget_7->reset();
+        lowTime=100;
+        highTime=200;
    }
 
     if ((distance >=(lowerRange + Range*0.075)) && (distance < (lowerRange +Range*0.15))) {
@@ -135,6 +154,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->setFillColor(QColor(247,139,0));
         ui->widget_6->setFillColor(QColor(211,33,45));
         ui->widget_7->reset();
+        lowTime=50;
+        highTime=100;
    }
 
 
@@ -146,6 +167,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->setFillColor(QColor(247,139,0));
         ui->widget_6->setFillColor(QColor(211,33,45));
         ui->widget_7->setFillColor(QColor(211,33,45));
+        lowTime=0;
+        highTime=1000;
    }
 }
 
@@ -154,11 +177,15 @@ void Dialog::on_pushButton_clicked()
 {
     timer->setInterval(250);
     timer->start();
+    timer1->setInterval(250);
+    timer1->start();
 }
 
 void Dialog::on_pushButton_2_clicked()
 {
     timer->stop();
+    timer1->stop();
+    bazer=false;
     ui->widget->reset();
     ui->widget_2->reset();
     ui->widget_3->reset();
@@ -168,4 +195,49 @@ void Dialog::on_pushButton_2_clicked()
     ui->widget_7->reset();
     ui->lcdNumber->display(0);
 
+}
+
+void Dialog::buzzer()
+{
+      if (bazer) {
+
+        digitalWrite(BUZZER_PIN,HIGH);
+        delay(highTime);
+        digitalWrite(BUZZER_PIN,LOW);
+        delay(lowTime);
+    }
+      else
+        digitalWrite(BUZZER_PIN,LOW);
+}
+
+void Dialog::on_pushButton_4_clicked()
+{
+    float min,max;
+    min=ui->lineEdit->text().toFloat();
+    max=ui->lineEdit_2->text().toFloat();
+
+    if ( (min < 2.5 || min > 150 || max < 2.5 || max > 100) || min >= max)
+        QMessageBox::warning(this, "POGRESAN UNOS", "Brojevi moraju biti veci od 2.5 i manji od 100, a minimum manji od maksimuma");
+    else
+    {
+        lowerRange=ui->lineEdit->text().toFloat();
+        upperRange=ui->lineEdit_2->text().toFloat();
+    }
+
+    qDebug() << lowerRange <<"   " << upperRange;
+}
+
+void Dialog::on_pushButton_3_clicked()
+{
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
+    lowerRange=2.5;
+    upperRange=50;
+}
+
+void Dialog::on_pushButton_5_clicked(bool checked)
+{
+    bazer= checked;
+    qDebug()<<"checked je: "<<checked;
+    qDebug() << "bazer je: "<<bazer;
 }

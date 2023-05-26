@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
     wiringPiSetup();
     pinMode(TRIGGER_PIN, OUTPUT);
     pinMode(ECHO_PIN, INPUT);
+    pinMode(BUZZER_PIN, OUTPUT);
 
     QApplication a(argc, argv);
     Dialog w;

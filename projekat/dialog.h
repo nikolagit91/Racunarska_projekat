@@ -11,9 +11,11 @@
 #include <QColorDialog>
 #include <QPen>
 #include <QMessageBox>
+#include <QDebug>
 
 #define TRIGGER_PIN 4
 #define ECHO_PIN 5
+#define BUZZER_PIN 27
 
 
 QT_BEGIN_NAMESPACE
@@ -35,8 +37,17 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void buzzer();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_5_clicked(bool checked);
+
 private:
     Ui::Dialog *ui;
     QTimer *timer;
+    QTimer *timer1;
 };
 #endif // DIALOG_H

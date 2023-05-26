@@ -1,34 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <wiringPi.h>
 
-#define BUZZER_PIN 17
 
-void setup()
-{
-    wiringPiSetup();
-    pinMode(BUZZER_PIN, OUTPUT);
-}
+#define BUZZER_PIN 27
+int highTime=100;
+int lowTime=0;
 
-void buzz(int duration_ms)
-{
-    digitalWrite(BUZZER_PIN, HIGH);
-    delay(duration_ms);
-    digitalWrite(BUZZER_PIN, LOW);
-    delay(duration_ms);
-}
 
 int main()
 {
-    setup();
+	if (wiringPiSetup() == -1) 
+		exit (1);
+        
 
-    // Make the buzzer beep 3 times with a 500ms duration
-    int i;
-    for (i = 0; i < 3; i++)
-    {
-        buzz(500);
-        delay(500);
+	pinMode(BUZZER_PIN, OUTPUT);
+
+
+
+	while (1) {
+   
+        digitalWrite(BUZZER_PIN,HIGH);
+        delay(highTime);
+        digitalWrite(BUZZER_PIN,LOW);
+        delay(lowTime);
+   
     }
-
-    return 0;
+     return 0;
 }
 

@@ -3,7 +3,7 @@
 
 
 float distance;
-float lowerRange=2.5;
+float lowerRange=3.5;
 float upperRange=50.0;
 float Range=upperRange-lowerRange;
 int highTime;
@@ -70,6 +70,8 @@ void Dialog::ultrasonic_read()
     ui->lcdNumber->display(distance);
 
     if (distance<lowerRange) {
+        lowTime=0;
+        highTime=1000;
         QMessageBox::warning(this, "SUDAR", "Odmakni se !!!");
     }
 
@@ -84,9 +86,10 @@ void Dialog::ultrasonic_read()
         ui->widget_7->reset();
         lowTime=0;
         highTime=0;
+        digitalWrite(BUZZER_PIN,LOW);
    }
 
-    if ((distance >= (lowerRange + Range*0.8)) && (distance < upperRange)) {
+    if ((distance >= (lowerRange + Range*0.82)) && (distance < upperRange)) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->reset();
         ui->widget_3->reset();
@@ -95,10 +98,10 @@ void Dialog::ultrasonic_read()
         ui->widget_6->reset();
         ui->widget_7->reset();
         lowTime=200;
-        highTime=300;
+        highTime=200;
    }
 
-    if ((distance >=(lowerRange + Range*0.6)) && (distance <(lowerRange + Range*0.8))) {
+    if ((distance >=(lowerRange + Range*0.66)) && (distance <(lowerRange + Range*0.82))) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->setFillColor(QColor(69,153,81));
         ui->widget_3->reset();
@@ -107,10 +110,10 @@ void Dialog::ultrasonic_read()
         ui->widget_6->reset();
         ui->widget_7->reset();
         lowTime=200;
-        highTime=300;
+        highTime=200;
    }
 
-    if ((distance >=(lowerRange + Range*0.4)) && (distance < (lowerRange + Range*0.6))) {
+    if ((distance >=(lowerRange + Range*0.5)) && (distance < (lowerRange + Range*0.66))) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->setFillColor(QColor(69,153,81));
         ui->widget_3->setFillColor(QColor(69,153,81));
@@ -119,10 +122,10 @@ void Dialog::ultrasonic_read()
         ui->widget_6->reset();
         ui->widget_7->reset();
         lowTime=200;
-        highTime=300;
+        highTime=200;
    }
 
-    if ((distance >=(lowerRange + Range*0.275)) && (distance < (lowerRange + Range*0.4))) {
+    if ((distance >=(lowerRange + Range*0.35)) && (distance < (lowerRange + Range*0.5))) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->setFillColor(QColor(69,153,81));
         ui->widget_3->setFillColor(QColor(69,153,81));
@@ -134,7 +137,7 @@ void Dialog::ultrasonic_read()
         highTime=200;
    }
 
-    if ((distance >=(lowerRange +Range*0.15)) && (distance < (lowerRange + Range*0.275))) {
+    if ((distance >=(lowerRange +Range*0.2)) && (distance < (lowerRange + Range*0.35))) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->setFillColor(QColor(69,153,81));
         ui->widget_3->setFillColor(QColor(69,153,81));
@@ -146,7 +149,7 @@ void Dialog::ultrasonic_read()
         highTime=200;
    }
 
-    if ((distance >=(lowerRange + Range*0.075)) && (distance < (lowerRange +Range*0.15))) {
+    if ((distance >=(lowerRange + Range*0.1)) && (distance < (lowerRange +Range*0.2))) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->setFillColor(QColor(69,153,81));
         ui->widget_3->setFillColor(QColor(69,153,81));
@@ -155,11 +158,11 @@ void Dialog::ultrasonic_read()
         ui->widget_6->setFillColor(QColor(211,33,45));
         ui->widget_7->reset();
         lowTime=50;
-        highTime=100;
+        highTime=200;
    }
 
 
-    if (distance <(lowerRange + Range*0.075)) {
+    if (distance <(lowerRange + Range*0.1)) {
         ui->widget->setFillColor(QColor(69,153,81));
         ui->widget_2->setFillColor(QColor(69,153,81));
         ui->widget_3->setFillColor(QColor(69,153,81));
@@ -167,8 +170,8 @@ void Dialog::ultrasonic_read()
         ui->widget_5->setFillColor(QColor(247,139,0));
         ui->widget_6->setFillColor(QColor(211,33,45));
         ui->widget_7->setFillColor(QColor(211,33,45));
-        lowTime=0;
-        highTime=1000;
+        lowTime=25;
+        highTime=200;
    }
 }
 
@@ -216,15 +219,14 @@ void Dialog::on_pushButton_4_clicked()
     min=ui->lineEdit->text().toFloat();
     max=ui->lineEdit_2->text().toFloat();
 
-    if ( (min < 2.5 || min > 150 || max < 2.5 || max > 100) || min >= max)
-        QMessageBox::warning(this, "POGRESAN UNOS", "Brojevi moraju biti veci od 2.5 i manji od 100, a minimum manji od maksimuma");
+    if ( (min < 3.5 || min > 150 || max < 3.5 || max > 100) || min >= max)
+        QMessageBox::warning(this, "POGRESAN UNOS", "Brojevi moraju biti veci od .5 i manji od 100, a minimum manji od maksimuma");
     else
     {
         lowerRange=ui->lineEdit->text().toFloat();
         upperRange=ui->lineEdit_2->text().toFloat();
     }
 
-    qDebug() << lowerRange <<"   " << upperRange;
 }
 
 void Dialog::on_pushButton_3_clicked()
@@ -238,6 +240,5 @@ void Dialog::on_pushButton_3_clicked()
 void Dialog::on_pushButton_5_clicked(bool checked)
 {
     bazer= checked;
-    qDebug()<<"checked je: "<<checked;
-    qDebug() << "bazer je: "<<bazer;
+
 }

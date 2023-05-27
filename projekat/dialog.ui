@@ -207,7 +207,7 @@
      </font>
     </property>
     <property name="text">
-     <string>(reset = 2.5)</string>
+     <string>(reset = 3.5)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">

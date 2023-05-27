@@ -31,19 +31,22 @@ public:
     ~Dialog();
 
 private slots:
-    void ultrasonic_read();
+    void updateDistance();
+
+    void updateWidgets();
+
+    void updateBuzzer();
 
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
-
-    void buzzer();
 
     void on_pushButton_4_clicked();
 
     void on_pushButton_3_clicked();
 
     void on_pushButton_5_clicked(bool checked);
+
 
 private:
     Ui::Dialog *ui;

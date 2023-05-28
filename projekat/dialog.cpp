@@ -236,11 +236,12 @@ void Dialog::on_pushButton_4_clicked()
     max=ui->lineEdit_2->text().toFloat();
 
     if ( (min < 3.5 || min > 150 || max < 3.5 || max > 100) || min >= max)
-        QMessageBox::warning(this, "POGRESAN UNOS", "Brojevi moraju biti veci od .5 i manji od 100, a minimum manji od maksimuma");
+        QMessageBox::warning(this, "POGRESAN UNOS", "Brojevi moraju biti veci od 3.5 i manji od 100, a minimum manji od maksimuma");
     else
     {
         lowerRange=ui->lineEdit->text().toFloat();
         upperRange=ui->lineEdit_2->text().toFloat();
+        Range=upperRange-lowerRange;
     }
 
 }

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/slike">
+        <file>buzzer (2).png</file>
+        <file>car-alarm (1).png</file>
+        <file>ruler.png</file>
+    </qresource>
+</RCC>

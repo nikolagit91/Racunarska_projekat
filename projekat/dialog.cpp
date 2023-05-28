@@ -9,7 +9,7 @@ int highTime;
 int lowTime;
 bool bazer=false;
 int k;
-bool warningDisplay=false;
+
 
 
 float getDistance()
@@ -69,20 +69,13 @@ void Dialog::updateDistance()
     ui->lcdNumber->display(distance);
 
     if (distance<lowerRange) {
-      if (!warningDisplay){
         lowTime=0;
         highTime=1000;
         QMessageBox *warningBox=new QMessageBox(QMessageBox::Warning, "SUDAR", "Odmakni se !!!");
         QTimer::singleShot(2000,warningBox, &QMessageBox::accept);
         warningBox->exec();
-        warningDisplay=true;
-    }
-      else {
-        warningDisplay=false;
-      }
+     }
 }
-}
-
 
 void Dialog::updateWidgets()
 {
@@ -223,6 +216,7 @@ void Dialog::on_pushButton_2_clicked()
     timer->stop();
     timer1->stop();
     bazer=false;
+    ui->pushButton_5->setChecked(false);
     ui->widget->reset();
     ui->widget_2->reset();
     ui->widget_3->reset();

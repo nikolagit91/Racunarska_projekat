@@ -71,6 +71,7 @@ void Dialog::updateDistance()
     if (distance<lowerRange) {
         lowTime=0;
         highTime=1000;
+        k=1;
         QMessageBox *warningBox=new QMessageBox(QMessageBox::Warning, "SUDAR", "Odmakni se !!!");
         QTimer::singleShot(2000,warningBox, &QMessageBox::accept);
         warningBox->exec();

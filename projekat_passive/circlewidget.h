@@ -1,7 +1,6 @@
 #ifndef CIRCLEWIDGET_H
 #define CIRCLEWIDGET_H
 
-
 #include <QWidget>
 #include <QColor>
 
@@ -22,8 +21,6 @@ protected:
 private:
     QColor m_fillColor;
     bool m_isFilled=false;
-
-
 
 };
 

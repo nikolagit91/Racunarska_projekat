@@ -187,7 +187,8 @@ void Dialog::updateWidgets()
 
 void Dialog::updateBuzzer()
 {
-    if (bazer) {
+    if (bazer)
+    {
         if (k==1) {
             digitalWrite(BUZZER_PIN,HIGH);
             delay(highTime);
@@ -196,9 +197,7 @@ void Dialog::updateBuzzer()
         }
           else if (k==0)
             digitalWrite(BUZZER_PIN,LOW);
-    }
-      else
-        digitalWrite(BUZZER_PIN,LOW);
+        }
 }
 
 
